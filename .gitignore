@@ -1,0 +1,8 @@
+set-github-remote.sh
+.venv
+.env
+
+# Temporary files, for example, from tests.
+/tmp/
+
+.vscode

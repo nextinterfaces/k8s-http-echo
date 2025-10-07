@@ -1,0 +1,8 @@
+# Simple single-node control-plane + 2 workers, with a LoadBalancer port mapped
+k3d cluster create dev \
+  --servers 1 \
+  --agents 2 \
+  --port "18081:80@loadbalancer"
+
+# Verify it’s up
+kubectl get nodes

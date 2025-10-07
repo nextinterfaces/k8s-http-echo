@@ -1,0 +1,21 @@
+kubectl apply -f ping.yaml
+
+    namespace/ping-demo created
+    deployment.apps/ping-api created
+    service/ping-api created
+
+
+kubectl -n ping-demo rollout status deploy/ping-api
+
+    deployment "ping-api" successfully rolled out
+
+kubectl -n ping-demo get svc,ingress
+
+    NAME       TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+    ping-api   LoadBalancer   10.43.66.212   <pending>     80:32260/TCP   25s
+
+curl http://localhost:18081/
+curl http://localhost:18081/ping
+# both should return: pong
+
+kubectl delete -f ping.yaml
